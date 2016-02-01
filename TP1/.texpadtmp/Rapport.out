@@ -1,0 +1,12 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Transformations g\351om\351triques}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Changement d'\351chelle}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Effet de l'interpolation}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{D\351bruitage par filtrage spatial}{}% 5
+\BOOKMARK [1][-]{section.4}{Am\351lioration d'images}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Correction de l'exposition}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Affinage de l'image}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Influence des param\350tres}{subsection.4.2}% 9
+\BOOKMARK [3][-]{subsubsection.4.2.2}{R\351sultat final}{subsection.4.2}% 10
+\BOOKMARK [2][-]{subsection.4.3}{Egalisation d'histogramme}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 12
