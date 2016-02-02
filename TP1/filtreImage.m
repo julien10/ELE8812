@@ -1,5 +1,5 @@
 function ims = filtreImage(im, taille, typeFiltre)
-%MOYENNESIMPLE Applique un filtre de moyenne simple de taille voulue
+% Fonction appliquant un filtre de de type et de taille voulus
 
 % Paramètres d'entrée : 
 % im : image (niveaux de gris) d'un type reconnu par Matlab. Tableau 2D 

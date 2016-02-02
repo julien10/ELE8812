@@ -1,7 +1,14 @@
+%*************************************************************************%
+% Fichier : histogrammes.m
+% Description : Script effectuant l'amélioration d'image de la photo de
+%               la Lune.
+% Auteurs : Julien ANTOINE 1813026 & Maxime SCHMITT 1719088
+%*************************************************************************%
+
 %% Chargement de l'image
 im = imread('Lune.tif');
 classin = class(im);
-im = im2double(im);
+im2 = im2double(im);
 
 
 %% Correction de l'exposition (filtre gamma)
@@ -10,21 +17,22 @@ im = im2double(im);
 gamma = 0.3;
 
 % Correction
-im3 = im2.^gamma;	% Transformation gamma
+im3 = im2.^gamma;              % Transformation gamma
 
 % Affichage
-subplot(1, 2, 1);
+figure(1);
+subplot(2, 2, 1);
 imshow(im2);
-title('Image originale')
-% subplot(2, 2, 2);
-% imhist(im2);
-% title('Image originale')
-subplot(1, 2, 2);
+title('Image originale');
+subplot(2, 2, 2);
+imhist(im2);
+title('Image originale');
+subplot(2, 2, 3);
 imshow(im3);
-title(['Image après transformation gamma (\gamma = ',num2str(gamma),')'])
-% subplot(2, 2, 4);
-% imhist(im3);
-% title(['Image après transformation gamma (\gamma = ',num2str(gamma),')'])
+title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
+subplot(2, 2, 4);
+imhist(im3);
+title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
 
 % Ecriture du fichier
 % imwrite(im3,'luneClaire.png');
@@ -34,9 +42,9 @@ title(['Image après transformation gamma (\gamma = ',num2str(gamma),')'])
 %% Affinage de l'image
 
 % Paramètres 
-sigma = 0.5;		% Ecart-type du filtre gaussien
-c = 10;			% Coefficient de réhaussement
-taille = 2*ceil(2*sigma)+1;		% Taille du filtre (nombre impair >= 3)
+sigma = 0.5;                                            % Ecart-type du filtre gaussien
+c = 10;                                     			% Coefficient de réhaussement
+taille = 2*ceil(2*sigma)+1;                             % Taille du filtre (nombre impair >= 3)
 
 % Affinage
 im3floue = imgaussfilt(im3,sigma,'FilterSize',taille);	% Application du filtre gaussien d'écart type sigma
@@ -48,12 +56,19 @@ im6 = im4 .* (256/m);
 
 
 % Affichage
-% subplot(1, 2, 1);
-% imshow(im4)
-% imhist(im4)
-% subplot(1, 2, 2);
-% imshow(im5)
-imhist(im5)
+figure(2);
+subplot(2, 2, 1);
+imshow(im4);
+title('');
+subplot(2, 2, 2);
+imhist(im4);
+title('');
+subplot(2, 2, 3);
+imshow(im5);
+title('');
+subplot(2, 2, 4);
+imhist(im5);
+title('');
 
 % Ecriture du fichier
 % imwrite(im4,['netteG',num2str(sigma),'T',num2str(taille),'C',num2str(c),'.png']);
