@@ -1,8 +1,9 @@
 %*************************************************************************%
-% Fichier : histogrammes.m
-% Description : Script effectuant l'amélioration d'image de la photo de
-%               la Lune.
-% Auteurs : Julien ANTOINE 1813026 & Maxime SCHMITT 1719088
+% Fichier : histogrammes.m                                                %
+% Description : Script effectuant l'amélioration d'image de la photo de   %
+%               la Lune.                                                  %
+% Auteurs : Julien ANTOINE 1813026 & Maxime SCHMITT 1719088               %
+% Date : 03/02/2016                                                       %
 %*************************************************************************%
 
 clear all;
