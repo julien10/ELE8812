@@ -51,18 +51,24 @@ else
 end
 
 [M, N] = size(A);
+% Taille de l'image mise à l'échelle voulue (ims)
+Ms = round(M*sc);
+Ns = round(N*sc);
 
-Ms = round(M*sc); % Taille de l'image mise à l'échelle ims
-Ns = round(N*sc); %
+% Coordonnées des milieux des pixels de ims dans le repère d'ims
+xs = (1:Ms)' - 1/2;
+ys = (1:Ns) - 1/2;
 
-xs = (1:Ms)' - 1/2; % Coordonnées des pixels de ims
-ys = (1:Ns) - 1/2; % 
+% Coordonnées des milieux des pixels de ims ramenées dans le repère de
+% l'image de départ (im)
+xsp = xs * M / Ms;
+ysp = ys * N / Ns;
 
-xsp = xs * M / Ms; % Coordonnées des pixels de ims
-ysp = ys * N / Ns; % ramenées dans le repère de l'image de départ
-
-xisp = floor(xsp)+1; % points (x, y) utilisés pour l'interpolation
-yisp = floor(ysp)+1; %
+% Coordonnées des pixels correspondant à l'interpolation
+% (e.g. xisp(i),yisp(j) est la coordonnée du pixel dans im qui doit être
+% utilisé dans le pixel de coordonnée i,j dans ims.
+xisp = floor(xsp)+1;
+yisp = floor(ysp)+1;
 
 As = A(xisp, yisp);
 

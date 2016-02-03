@@ -12,7 +12,6 @@ clc;
 
 %% Chargement de l'image
 im = imread('Lune.tif');
-classin = class(im);
 im2 = im2double(im);
 
 
