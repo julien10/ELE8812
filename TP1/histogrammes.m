@@ -5,6 +5,10 @@
 % Auteurs : Julien ANTOINE 1813026 & Maxime SCHMITT 1719088
 %*************************************************************************%
 
+clear all;
+close all;
+clc;
+
 %% Chargement de l'image
 im = imread('Lune.tif');
 classin = class(im);
@@ -13,11 +17,11 @@ im2 = im2double(im);
 
 %% Correction de l'exposition (filtre gamma)
 
-% Paramètre
+% Paramètre de la transformation
 gamma = 0.3;
 
-% Correction
-im3 = im2.^gamma;              % Transformation gamma
+% Correction de l'exposition (Transformation gamma)
+im3 = im2.^gamma;
 
 % Affichage
 figure(1);
@@ -38,42 +42,54 @@ title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
 % imwrite(im3,'luneClaire.png');
 
 
-
-%% Affinage de l'image
+%% Affinage de l'image et égalisation d'histogramme
 
 % Paramètres 
-sigma = 0.5;                                            % Ecart-type du filtre gaussien
-c = 10;                                     			% Coefficient de réhaussement
-taille = 2*ceil(2*sigma)+1;                             % Taille du filtre (nombre impair >= 3)
+sigma = 0.5;                 % Ecart-type du filtre gaussien
+c = 10;                      % Coefficient de réhaussement
+taille = 2*ceil(2*sigma)+1;  % Taille du filtre (nombre impair >= 3)
 
-% Affinage
-im3floue = imgaussfilt(im3,sigma,'FilterSize',taille);	% Application du filtre gaussien d'écart type sigma
-diff = im3 - im3floue;									% Différence entre l'image originale et l'image floue
-im4 = im3 + c * diff;									% Affinage de l'image
-im5 = histeq(im4);										% Egalisation de l'histogramme
+% Affinage de l'image
+% Application du filtre gaussien d'écart type sigma
+im3floue = imgaussfilt(im3,sigma,'FilterSize',taille);
+
+% Différence entre l'image originale et l'image floue
+diff = im3 - im3floue;
+% Affinage de l'image (rehaussement)
+im4 = im3 + c * diff;
+
 m = find(imhist(im4)~=0,1,'last');
-im6 = im4 .* (256/m);
+im5 = im4 .* (256/m);
 
 
 % Affichage
 figure(2);
 subplot(2, 2, 1);
 imshow(im4);
-title('');
+title('Image affinée');
 subplot(2, 2, 2);
 imhist(im4);
-title('');
+title('Histogramme de l''image affinée');
 subplot(2, 2, 3);
 imshow(im5);
-title('');
+title('Image d''histogramme étalé');
 subplot(2, 2, 4);
 imhist(im5);
-title('');
+title('Histogramme étalé');
 
 % Ecriture du fichier
 % imwrite(im4,['netteG',num2str(sigma),'T',num2str(taille),'C',num2str(c),'.png']);
 
+%% Égalisation de l'histogramme
+im6 = histeq(im5, 255);
 
-%% Égalisation d'histogramme
+m = find(imhist(im6)~=0,1,'last');
+im6 = im6 .* (256/m);
 
-eval(['ims = im2', classin, '(im);'])
+figure(3);
+subplot(1, 2, 1);
+imshow(im6);
+title('Image égalisée');
+subplot(1, 2, 2);
+imhist(im6);
+title('Histogramme de l''image égalisée');
