@@ -12,19 +12,16 @@ clc;
 
 %% Chargement de l'image et définition des paramètres
 im = imread('Barbara.tif');
-%im2 = im2double(im);
 
 facteurEchelle = 0.5;
 
 %% Changements d'échelle successif utilisant les 2 méthodes
 
 % Avec l'interpolation bilinéaire
-imBil = mae_bil(im, 0.5);
-imBil = mae_bil(imBil, 2);
+imBil = mae_bil(mae_bil(im, facteurEchelle), 1/facteurEchelle);
 
 % Avec l'interpolation Plus Proche Voisin
-imPpv = mae_ppv(im, 0.5);
-imPpv = mae_ppv(imPpv, 2);
+imPpv = mae_ppv(mae_ppv(im, facteurEchelle), 1/facteurEchelle);
 
 imwrite(imBil, 'BarbaraBil.tif');
 imwrite(imPpv, 'BarbaraPpv.tif');

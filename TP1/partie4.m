@@ -41,13 +41,13 @@ imshow(im3);
 title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
 subplot(3, 2, 4);
 imhist(im3);
-title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
+title(['Histogramme après transformation gamma (\gamma = ',num2str(gamma),')']);
 subplot(3, 2, 5);
 imshow(im4);
-title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
+title(['Image après étalement d''histogramme']);
 subplot(3, 2, 6);
 imhist(im4);
-title(['Image après transformation gamma (\gamma = ',num2str(gamma),')']);
+title(['Histogramme après étalement']);
 
 % Ecriture du fichier
 % imwrite(im3,'luneClaire.png');
@@ -115,10 +115,10 @@ imhist(im6);
 title('Histogramme égalisé');
 subplot(2, 2, 3);
 imshow(im7);
-title('Image égalisée et d''histogramme étalé');
+title('Image après étalement d''histogramme');
 subplot(2, 2, 4);
 imhist(im7);
-title('Histogramme égalisé et étalé');
+title('Histogramme après étalement');
 
 %% Affichage comparatif avant/après traitement
 figure(4);
