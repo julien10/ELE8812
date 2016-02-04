@@ -200,7 +200,11 @@ On observe une nette amélioration de l'image (figure \ref{luneExpo}), où l'on pe
 	\label{gamma03}
 \end{figure}
 
-
+\paragraph{}
+On conclue les transformations sur l'intensité par un étalement de l'histogramme de l'image. Cela a pour
+effet d'augmenter la luminosité globale de l'image comme on peut le voir sur la
+figure~\ref{luneHistoEtale} et on voit que l'histogramme est encore davantage décalé vers la droite sur
+la figure~\ref{luneHistoEtaleHist}.
 
 \newpage
 \subsection{Affinage de l'image}
@@ -251,7 +255,18 @@ pour lesquelles on obtient la figure \ref{affinage}.
 \end{figure}
 
 \subsection{Egalisation d'histogramme}
-\textcolor{red}{Expliquer pourquoi ça fait de la merde (figure \ref{egal})}
+On égalise alors l'histogramme de l'image et on constate alors que l'image est dans l'ensemble trop
+blanche (figure~\ref{egal}). Cela est dû au fait que l'égalisation transforme l'histogramme de telle
+sorte que la valeur la plus à gauche (donc la plus noire) soit égale au nombre de pixel les plus foncés
+(ici noirs) sur le nombre de pixel totaux. Dans le cas de notre image juste avant l'égalisation, ce
+calcul a pour résultat la valeur 0.6434. Le noir est donc transformé en un gris clair et, comme la
+transformation est croissante, tous les pixels initialement plus clairs le seront encore après la
+transformation, on ne trouve rien de plus foncé que cette valeur dans l'image résultante.
+(Figure~\ref{etalHist})
+
+On résout ce problème en effectuant à nouveau un étalement d'histogramme qui permet à d'avoir des nuances
+de gris qui s'étalent sur l'ensemble allant de 0 à 1. (Figure~\ref{etalHist}) Et on a alors notre image
+finale de bonne qualité. (Figure~\ref{luneEgaliseeEtEtalee})
 
 \begin{figure}[!h] 
 	\centering
@@ -265,11 +280,6 @@ pour lesquelles on obtient la figure \ref{affinage}.
 	\caption{Effet de l'égalisation d'histogramme} 
 	\label{egal}
 \end{figure}
-
-
-
-\section{Conclusion}
-
 
 
 \end{document}
