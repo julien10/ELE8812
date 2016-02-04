@@ -107,7 +107,9 @@ Enfin, la dernière partie a pour but d'améliorer une image floue et très sombre 
 
 \section{Transformations géométriques}
 \subsection{Changement d'échelle}
-Le code commenté peut être trouvé dans le fichier \textit{mae\_ppv.m}. Pour résumé les explications
+Le code commenté peut être trouvé dans le fichier \textit{mae\_ppv.m}.
+
+Pour résumé les explications
 données en commentaires, les étapes pour passer de \textit{im} à \textit{ims} sont les suivantes :
 \begin{itemize}
 	\item Calcul des dimensions de \textit{ims}
@@ -123,18 +125,29 @@ données en commentaires, les étapes pour passer de \textit{im} à \textit{ims} so
 Le code permettant de réaliser les tâches demandées dans cette partie peut être trouvé dans le fichier
 \textit{partie2.m}.
 
+On constate sur la figure~\ref{BarbaraTriplet} que la méthode d'interpolation par Plus Proche Voisin
+entraîne un rendu qui est davantage crénelé là où la méthode bilinéaire a un rendu plus doux, avec une
+impression de flou, ce qui est logique puisque cette dernière calcule les nouvelles valeurs des pixels à
+l'aide de plusieurs pixels originaux là ou la première choisit un unique pixel pour déterminer la
+nouvelle valeur. Dans le premier cas les contours sont donc adoucis, progressifs, alors que dans le
+second il auront tendance à être plus abrupts.
+
 \begin{figure}[!h]
 	\centering
-	\includegraphics[width = 0.3\textwidth]{BarbaraTriplet}
-	\caption{De gauche à droite : Image originale, image interpolée bilinéairement, image interpolée avec le Plus Proche Voisin}
+	\includegraphics[width = \textwidth]{BarbaraTriplet.png}
+	\caption{De gauche à droite : Image originale, image interpolée avec la méthode bilinéaire, image interpolée avec la méthode du Plus Proche Voisin}
 	\label{BarbaraTriplet}
 \end{figure}
 
 \section{Débruitage par filtrage spatial}
-
+Le code permettant de réaliser les tâches demandées dans cette partie peut être trouvé dans les fichiers
+\textit{filtreImage.m} et \textit{partie3.m}.
 
 \newpage
 \section{Amélioration d'images}
+Le code permettant de réaliser les tâches demandées dans cette partie peut être trouvé dans le fichier
+\textit{partie4.m}.
+
 Cette section a pour but d'améliorer une image de médiocre qualité, tant du point de vue intensité que netteté. L'image considérée est représentée à la figure \ref{lune}.
 
 \begin{figure}[!h]
