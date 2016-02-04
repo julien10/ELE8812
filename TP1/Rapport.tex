@@ -107,11 +107,28 @@ Enfin, la dernière partie a pour but d'améliorer une image floue et très sombre 
 
 \section{Transformations géométriques}
 \subsection{Changement d'échelle}
-
+Le code commenté peut être trouvé dans le fichier \textit{mae\_ppv.m}. Pour résumé les explications
+données en commentaires, les étapes pour passer de \textit{im} à \textit{ims} sont les suivantes :
+\begin{itemize}
+	\item Calcul des dimensions de \textit{ims}
+	\item Calcul des coordonnées des milieux des pixels dans ims à partir des coordonnées des points en
+	haut à gauche de ceux-ci (coordonnées initiales)
+	\item Calcul des coordonnées des ces milieux dans le repère de l'image initiale \textit{ims}
+	\item Calcul des coordonnées des pixels à utiliser pour le pixel de milieu donné (premier pixel en
+	haut à gauche du milieu considéré)
+	\item Construction de l'image avec les pixels ainsi déterminés
+\end{itemize}
 
 \subsection{Effet de l'interpolation}
+Le code permettant de réaliser les tâches demandées dans cette partie peut être trouvé dans le fichier
+\textit{partie2.m}.
 
-
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width = 0.3\textwidth]{BarbaraTriplet}
+	\caption{De gauche à droite : Image originale, image interpolée bilinéairement, image interpolée avec le Plus Proche Voisin}
+	\label{BarbaraTriplet}
+\end{figure}
 
 \section{Débruitage par filtrage spatial}
 
