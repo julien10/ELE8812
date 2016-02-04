@@ -69,10 +69,6 @@ diff = im4 - im4floue;
 % Affinage de l'image (rehaussement)
 im5 = im4 + c * diff;
 
-m = find(imhist(im4)~=0,1,'last');
-im4 = im4 .* (256/m);
-
-
 % Affichage
 figure(2);
 subplot(3, 2, 1);
@@ -83,10 +79,10 @@ imhist(im2);
 title('Image originale');
 subplot(3, 2, 3);
 imshow(im4);
-title('Image corrigée');
+title('Image à l''étape précédente');
 subplot(3, 2, 4);
 imhist(im4);
-title('Histogramme de l''image corrigée');
+title('Histogramme de l''image à l''étape précédente');
 subplot(3, 2, 5);
 imshow(im5);
 title('Image affinée');
@@ -95,7 +91,7 @@ imhist(im5);
 title('Histogramme de l''image affinée');
 
 % Ecriture du fichier
-% imwrite(im4,['netteG',num2str(sigma),'T',num2str(taille),'C',num2str(c),'.png']);
+imwrite(im4,['netteG',num2str(sigma),'T',num2str(taille),'C',num2str(c),'.png']);
 
 %% Égalisation de l'histogramme
 im6 = histeq(im5);
@@ -119,6 +115,9 @@ title('Image après étalement d''histogramme');
 subplot(2, 2, 4);
 imhist(im7);
 title('Histogramme après étalement');
+
+imwrite(im6, 'luneEgalisee.tif');
+imwrite(im7, 'luneEgaliseeEtEtalee.tif');
 
 %% Affichage comparatif avant/après traitement
 figure(4);
